@@ -1,0 +1,68 @@
+# iOS CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/ios-migrating-from-1-2/ for more details
+#
+version: 2
+jobs:
+  build:
+
+    # Specify the Xcode version to use
+    macos:
+      xcode: "9.0"
+
+    dependencies:
+      pre:
+        - xcrun instruments -w "iPhone 7 (11.0) [" || true
+    
+    steps:
+      - checkout
+
+      # Install CocoaPods
+      - run:
+          name: Install CocoaPods
+          command: pod install
+
+      # Build the app and run tests
+      - run:
+          name: "environment information"
+          command: |
+              xcrun simctl list devices
+
+      # Build the app and run tests
+      - run:
+          name: Build and run tests
+          command: |
+            sudo gem install fastlane
+            export LC_ALL=en_US.UTF-8
+            export LANG=en_US.UTF-8
+            set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace ./PhotoApp.xcworkspace -scheme PhotoApp -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0' -derivedDataPath '/Users/distiller/Library/Developer/Xcode/DerivedData/PhotoApp-hhoaagofktjpbsbqslgftrztpgyo' build test
+            # fastlane scan
+          environment:
+            SCAN_DEVICE: iPhone 7 (11.0)
+            SCAN_SCHEME: PhotoApp
+
+      - run:
+          name: "Magic Pod Desktop download"
+          command: |
+              if [ ! -e MagicPodDesktop0.11.4.zip ]; then
+                  curl -L -O https://github.com/Magic-Pod/japanese-issue-and-doc/releases/download/0.11.4/MagicPodDesktop0.11.4.zip
+                  unzip MagicPodDesktop0.11.4.zip
+              fi
+
+      - run:
+          name: "Magic Pod Desktop CLI"
+          command: |
+              ls -l /Users/distiller/Library/Developer/Xcode/DerivedData
+              "Magic Pod Desktop.app/Contents/MacOS/Magic Pod Desktop" run --magic_pod_config=$(pwd)/magic_pod_config.json
+
+      # Collect XML test results data to show in the UI,
+      # and save the same XML files under test-results folder
+      # in the Artifacts tab
+      #- store_test_results:
+      #    path: test_output/report.xml
+      #- store_artifacts:
+      #    path: /tmp/test-results
+      #    destination: scan-test-results
+      #- store_artifacts:
+      #    path: ~/Library/Logs/scan
+      #    destination: scan-logs
