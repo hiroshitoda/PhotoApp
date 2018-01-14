@@ -28,7 +28,7 @@ jobs:
 
       - run:
           name: pre-start simulator
-          command: xcrun simctl boot "iPhone 8 (11.0) [" || true
+          command: xcrun simctl boot "iPhone 5 (10.3.1) [" || true
 
       # Build the app and run tests
       - run:
@@ -39,7 +39,7 @@ jobs:
             export LANG=en_US.UTF-8
             fastlane scan
           environment:
-            SCAN_DEVICE: iPhone 8 (11.0)
+            SCAN_DEVICE: iPhone 5 (10.3.1)
             SCAN_SCHEME: PhotoApp
             SCAN_DERIVED_DATA_PATH: $(pwd)/DerivedData
 
