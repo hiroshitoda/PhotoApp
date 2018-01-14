@@ -24,6 +24,10 @@ jobs:
           command: |
               xcrun simctl list devices
 
+      - run:
+          name: pre-start simulator
+          command: xcrun instruments -w "iPhone 7 (11.0) [" || true
+
       # Build the app and run tests
       - run:
           name: Build and run tests
