@@ -37,7 +37,7 @@ jobs:
             sudo gem install fastlane
             export LC_ALL=en_US.UTF-8
             export LANG=en_US.UTF-8
-            find ../ -name "ModuleCache"
+            mkdir -p $(pwd)/DerivedData
             fastlane scan
           environment:
             SCAN_DEVICE: iPhone 7 (11.0)
