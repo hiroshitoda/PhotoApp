@@ -30,6 +30,10 @@ jobs:
           name: pre-start simulator
           command: xcrun simctl boot "iPhone 7 (11.0) [" || true
 
+      - run:
+          name: make DerivedData dir
+          command: mkdir -p $(pwd)/DerivedData/ModuleCache/Session.modulevalidation
+
       # Build the app and run tests
       - run:
           name: Build and run tests
@@ -37,7 +41,6 @@ jobs:
             sudo gem install fastlane
             export LC_ALL=en_US.UTF-8
             export LANG=en_US.UTF-8
-            mkdir -p $(pwd)/DerivedData
             fastlane scan
           environment:
             SCAN_DEVICE: iPhone 7 (11.0)
