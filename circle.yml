@@ -26,9 +26,9 @@ jobs:
               xcrun instruments -s
               sw_vers -productVersion
 
-      # - run:
-      #     name: pre-start simulator
-      #     command: xcrun simctl boot "iPhone 7 (11.0) [" || true
+      - run:
+          name: pre-start simulator
+          command: xcrun simctl boot "iPhone 7 (11.0) [" || true
 
       # Build the app and run tests
       - run:
