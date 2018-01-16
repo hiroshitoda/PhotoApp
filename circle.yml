@@ -58,7 +58,8 @@ jobs:
       - run:
           name: "Magic Pod Desktop CLI"
           command: |
-              "Magic Pod Desktop.app/Contents/MacOS/Magic Pod Desktop" run --magic_pod_config=$(pwd)/magic_pod_config.json
+              echo -n ${magic_pod_token} > ~/.magic_pod_token
+              "Magic Pod Desktop.app/Contents/MacOS/Magic Pod Desktop" run --magic_pod_config=$(pwd)/magic_pod_config.circleci.json
 
       # Collect XML test results data to show in the UI,
       # and save the same XML files under test-results folder

@@ -1,0 +1,21 @@
+{
+  "owner": "ATeam",
+  "project": "MyIOSApp",
+  "capabilities": {
+    "platformName": "iOS",
+    "platformVersion": "11.0",
+    "deviceName": "iPhone 7",
+    "automationName": "XCUITest",
+    "app": "/Users/distiller/project/DerivedData/Build/Products/Debug-iphonesimulator/PhotoApp.app",
+    "noReset": true
+  },
+  "xmlTestOutput": true,
+  "externalAppium": false,
+  "debug": false,
+  "serverUrl": "https://magic-pod.com",
+  "workDir": "/Users/distiller/project/MagicPod",
+  "testNumber": "1",
+  "envVars": [],
+  "appiumServerUrl": "",
+  "sendMail": false
+}
