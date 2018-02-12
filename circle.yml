@@ -50,9 +50,9 @@ jobs:
       - run:
           name: "Magic Pod Desktop download"
           command: |
-              if [ ! -e MagicPodDesktop0.11.4.zip ]; then
-                  curl -L -O https://github.com/Magic-Pod/japanese-issue-and-doc/releases/download/0.11.4/MagicPodDesktop0.11.4.zip
-                  unzip MagicPodDesktop0.11.4.zip
+              if [ ! -e MagicPodDesktop0.14.0.zip ]; then
+                  curl -L -O https://github.com/Magic-Pod/japanese-issue-and-doc/releases/download/0.14.0/MagicPodDesktop0.14.0.zip
+                  unzip MagicPodDesktop0.14.0.zip
               fi
 
       - run:
