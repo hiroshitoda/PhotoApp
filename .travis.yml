@@ -10,6 +10,6 @@ script:
 - export SCAN_SCHEME=PhotoApp
 - export SCAN_DERIVED_DATA_PATH=$(pwd)/DerivedData
 - fastlane scan
-- if [ ! -e MagicPodDesktop0.11.4.zip ]; then curl -L -O https://github.com/Magic-Pod/japanese-issue-and-doc/releases/download/0.11.4/MagicPodDesktop0.11.4.zip; unzip -q MagicPodDesktop0.11.4.zip; fi
+- if [ ! -e MagicPodDesktop0.14.0.zip ]; then curl -L -O https://github.com/Magic-Pod/japanese-issue-and-doc/releases/download/0.14.0/MagicPodDesktop0.14.0.zip; unzip -q MagicPodDesktop0.14.0.zip; fi
 - echo -n ${magic_pod_token} > ~/.magic_pod_token
 - Magic\ Pod\ Desktop.app/Contents/MacOS/Magic\ Pod\ Desktop run --magic_pod_config=$(pwd)/magic_pod_config.json
